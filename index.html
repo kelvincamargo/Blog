@@ -5,19 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog </title>
     <style>
-       body {
+        body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-        }
-       body {
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
         }
         .header {
             width: 100%;
@@ -42,22 +35,21 @@
             height: 100vh;
             padding: 20px;
             position: fixed;
+            top: 60px;
+            left: 0;
+            z-index: 999;
             transition: width 0.3s;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            top: 60px;
         }
         .sidebar.minimized {
             width: 60px;
-            padding: 10px;
         }
         .sidebar h2, .sidebar ul {
             transition: opacity 0.3s;
         }
-        .sidebar.minimized h2, 
-        .sidebar.minimized ul {
+        .sidebar.minimized h2, .sidebar.minimized ul {
             opacity: 0;
             visibility: hidden;
         }
@@ -98,6 +90,44 @@
             cursor: pointer;
             padding: 10px;
             font-size: 16px;
+        }
+
+        /* Estilização das Seções */
+        section {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #222;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+        }
+
+        section ul li a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .coisas ul li, .highlights ul li {
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         /* Responsividade */
@@ -144,21 +174,47 @@
     </script>
 </head>
 <body>
-    <div class="header">Blog do Desenvolvedor</div>
+    <div class="header">Blog Kelvin Camargo</div>
     <div class="main-container">
         <div class="sidebar">
             <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-            <h2>Blog do Dev</h2>
+            <h2>Menu</h2>
             <ul>
                 <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="logica.html">Lógica de Programação</a></li>
                 <li><a href="arduino.html">Projetos Arduino</a></li>
+                <li><a href="Ferramentas.html">Ferramentas e Recursos</a></li>
             </ul>
         </div>
         <div class="content">
             <h1>Bem-vindo ao meu blog!</h1>
             <p>Aqui compartilho minhas experiências como desenvolvedor.</p>
+
+            <section class="coisas">
+                <h2>O que você vai encontrar por aqui:</h2>
+                <ul>
+                    <li><strong>Artigos sobre Desenvolvimento</strong><br> Descubra dicas, truques e boas práticas sobre desenvolvimento de software. Se você é um iniciante ou já tem experiência, temos algo para todos.</li>
+                    <li><strong>Lógica de Programação</strong><br> Aprenda a resolver problemas de forma lógica e eficiente com os fundamentos da programação. Desde o início, até algoritmos mais avançados, aqui você encontra explicações simples e claras.</li>
+                    <li><strong>Projetos Arduino</strong><br> O mundo dos microcontroladores é fascinante e aqui, você encontrará tutoriais passo a passo para criar seus próprios projetos com Arduino. Se você é fã de eletrônica e quer colocar a mão na massa, esse espaço é para você.</li>
+                    <li><strong>Ferramentas e Recursos</strong><br> Encontre recomendações de ferramentas que podem facilitar seu trabalho como desenvolvedor, desde IDEs, até bibliotecas e frameworks que podem otimizar seu fluxo de trabalho.</li>
+                     </ul>
+            </section>
+
+            <section class="highlights">
+                <h2>Destaques da Semana:</h2>
+                <ul>
+                    <li><a href="https://www.w3schools.com/whatis/">[Como Iniciar no Desenvolvimento Web]</a>: Se você está começando agora no mundo da programação, este site é para você! Passo a passo para começar no front-end e back-end.</li>
+                    <li><a href="https://prp.usp.br/wp-content/uploads/sites/248/2020/07/1Livro-Arduino-Introdu%C3%A7%C3%A3o-a-Rob%C3%B3tica-Educacional-HANDS-ON-INTRODUCAO.pdf">[Introdução ao Arduino e Projetos Simples]</a>: Saiba como começar com o Arduino e criar projetos que você pode usar no seu dia a dia.</li>
+                    <li><a href="https://www.dio.me/articles/desbravando-as-ides-as-5-ides-mais-populares-do-mercado">[Ferramentas de Programação: IDEs e Frameworks]</a>: Uma lista das melhores ferramentas para programadores iniciantes e experientes.</li>
+                </ul>
+            </section>
+
+            <section class="community">
+                <h2>Junte-se à Comunidade</h2>
+                <p>Não perca a chance de interagir com outros desenvolvedores! Deixe seu comentário em nossos artigos, compartilhe suas próprias dicas ou até mesmo participe de nossos desafios semanais.</p>
+            </section>
+
         </div>
     </div>
 </body>
