@@ -232,33 +232,33 @@
 
 #include Servo.h
 
-    Servo meuServo;
+Servo meuServo;
     
-    const int pinoPot = A0; 
+const int pinoPot = A0; 
 
-    int leituraPot;
+int leituraPot;
 
-    int angulo;           
+int angulo;           
     
-    void setup() {
+void setup() {
 
-      Serial.begin(9600);
+Serial.begin(9600);
 
-      meuServo.attach(9);
+meuServo.attach(9);
 
     }
     
-    void loop() {
+void loop() {
 
-      leituraPot = analogRead(pinoPot); 
+leituraPot = analogRead(pinoPot); 
 
-      Serial.println(leituraPot);      
+Serial.println(leituraPot);      
     
-      angulo = map(leituraPot, 0, 1023, 0, 180);
+angulo = map(leituraPot, 0, 1023, 0, 180);
 
-      meuServo.write(angulo);  
+meuServo.write(angulo);  
 
-      delay(10); 
+delay(10); 
 
     }
     
