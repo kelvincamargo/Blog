@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog do Desenvolvedor</title>
+    <style>
+        /* Importando fontes da Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        .header {
+            width: 100%;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 28px;
+            font-family: 'Roboto', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .main-container {
+            display: flex;
+            margin-top: 60px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            transition: width 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 60px;
+        }
+        
+        .sidebar.minimized {
+            width: 60px;
+            padding: 10px;
+        }
+        
+        .sidebar h2, .sidebar ul {
+            transition: opacity 0.3s;
+        }
+        
+        .sidebar.minimized h2, 
+        .sidebar.minimized ul {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+        
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+        
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+            font-family: 'Roboto', sans-serif;
+            transition: margin-left 0.3s;
+        }
+        
+        .sidebar.minimized + .content {
+            margin-left: 80px;
+        }
+        
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+        }
+
+        pre, code {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #272727;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            overflow-x: auto;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+                transition: width 0.3s, padding 0.3s;
+            }
+            .sidebar.minimized {
+                width: 250px;
+                padding: 20px;
+            }
+            .sidebar h2, .sidebar ul {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s;
+            }
+            .sidebar.minimized h2, .sidebar.minimized ul {
+                opacity: 1;
+                visibility: visible;
+            }
+            .content {
+                margin-left: 0;
+                padding: 15px;
+                transition: margin-left 0.3s;
+            }
+            .sidebar.minimized + .content {
+                margin-left: 250px;
+            }
+            .toggle-btn {
+                position: fixed;
+                left: 10px;
+                top: 70px;
+                z-index: 1001;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Blog do Desenvolvedor</div>
+    <div class="main-container">
+        <div class="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+            <h2>Blog do Dev</h2>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="logica.html">Lógica de Programação</a></li>
+                <li><a href="#">Projetos Arduino</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            
+            <h1>Arduino</h1>
+            <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto que permite criar projetos 
+                interativos e automatizados. Ele é composto por uma placa com um microcontrolador (um pequeno computador) 
+                que pode ser programado para controlar sensores, motores, luzes e outros dispositivos. O Arduino é amplamente utilizado 
+                por hobbyistas, educadores e profissionais para desenvolver protótipos de eletrônicos de forma rápida e acessível.</p>
+            
+            <h2>Linguagem de programação do Arduino</h2>
+            <p>A linguagem de programação do Arduino é baseada em C/C++, mas simplificada para facilitar o uso de iniciantes. O código é escrito
+             no Arduino IDE (Ambiente de Desenvolvimento Integrado), que compila e carrega o código diretamente na placa.</p>
+            
+            <h2>Projetos realizados</h2>
+        
+            <h3>1. Controlando um Servo Motor</h3>
+            <p>
+                Nesse projeto foi realizado o controle do movimento de um servo motor usando um potenciômetro. O servo motor é um tipo de motor que 
+                pode ser posicionado em ângulos específicos. O potenciômetro vai permitir que você ajuste a posição do servo motor manualmente. 
+                </p>
+            <pre><code>
+# Exemplo em C++:
+
+#include Servo.h
+
+    Servo meuServo;
+    
+    const int pinoPot = A0; 
+
+    int leituraPot;
+
+    int angulo;           
+    
+    void setup() {
+
+      Serial.begin(9600);
+
+      meuServo.attach(9);
+
+    }
+    
+    void loop() {
+
+      leituraPot = analogRead(pinoPot); 
+
+      Serial.println(leituraPot);      
+    
+      angulo = map(leituraPot, 0, 1023, 0, 180);
+
+      meuServo.write(angulo);  
+
+      delay(10); 
+
+    }
+    
+            </code></pre>
+        
+            <h3>2. Semáforo com millis</h3>
+            <p> Projeto realizado de um circuito de um semáforo utilizando a função millis():</p>
+            <pre><code>
+                unsigned long agora = 0;
+
+                int ledVerde = 11;
+
+                int ledLaranja = 12;
+
+                int ledRed = 13;
+                
+                void setup() {
+
+                  pinMode(ledRed, OUTPUT);
+
+                  pinMode(ledLaranja, OUTPUT);
+
+                  pinMode(ledVerde, OUTPUT);
+                  
+                  agora = millis();  
+
+                }
+                
+                void loop() {
+
+                  unsigned long tempoDecorrido = millis() - agora;
+
+                  Serial.println(tempoDecorrido);
+                  
+                  if (tempoDecorrido <= 6000) {
+
+                    digitalWrite(ledVerde, HIGH);
+
+                    digitalWrite(ledLaranja, LOW);
+
+                    digitalWrite(ledRed, LOW);
+
+                  } else if (tempoDecorrido <= 7000) {
+
+                    digitalWrite(ledVerde, LOW);
+
+                    digitalWrite(ledLaranja, HIGH);
+
+                    digitalWrite(ledRed, LOW);
+
+                  } else if (tempoDecorrido <= 16000) {
+
+                    digitalWrite(ledVerde, LOW);
+
+                    digitalWrite(ledLaranja, LOW);
+                   
+                    digitalWrite(ledRed, HIGH);
+
+                  } 
+                  
+                     else{
+                   
+                    agora = millis();
+                
+                        }
+
+                }
+
+            </code></pre>
+        
+            <h3>3. Código morse</h3>
+            <p>Projeto realizado para fazer um algoritmo que acione o led com o protocolo (código morse)</p>
+            <pre><code>
+                // C++ code
+            
+                void setup()
+
+                {
+
+                  pinMode(LED_BUILTIN, OUTPUT);
+
+                }
+                
+                void loop()
+
+                {
+                  digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(1800); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                  
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(600); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(1800); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(2000); // Wait for 1000 millisecond(s)
+                  
+                  
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(600); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(2000); // Wait for 1000 millisecond(s)
+                  
+                  
+                    digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(600); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                  
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(1800); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                
+                }
+
+            </code></pre>
+        
+        
+            <h2>Conclusão</h2>
+            <p>Em conclusão, o Arduino é uma plataforma poderosa e acessível para quem deseja aprender e aplicar eletrônica e programação de maneira prática. Sua simplicidade,
+                 aliada a uma comunidade ativa e recursos abundantes, torna a criação de projetos interativos mais fácil e
+                  divertida. A linguagem de programação, baseada em C/C++, oferece um ponto de partida ideal para 
+                  iniciantes, permitindo que qualquer pessoa possa começar a desenvolver soluções criativas. Seja para
+                   hobby ou para fins educacionais e profissionais, o Arduino proporciona uma excelente oportunidade de 
+                   explorar o mundo da tecnologia e da inovação.</p>
+            <p>Para mais projetos acesse meu Github!</p>
+        </div>
+    </div>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('minimized');
+            document.querySelector('.content').classList.toggle('minimized');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog do Desenvolvedor</title>
+    <style>
+        /* Importando fontes da Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        .header {
+            width: 100%;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 28px;
+            font-family: 'Roboto', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .main-container {
+            display: flex;
+            margin-top: 60px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            transition: width 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 60px;
+        }
+        
+        .sidebar.minimized {
+            width: 60px;
+            padding: 10px;
+        }
+        
+        .sidebar h2, .sidebar ul {
+            transition: opacity 0.3s;
+        }
+        
+        .sidebar.minimized h2, 
+        .sidebar.minimized ul {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+        
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+        
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+            font-family: 'Roboto', sans-serif;
+            transition: margin-left 0.3s;
+        }
+        
+        .sidebar.minimized + .content {
+            margin-left: 80px;
+        }
+        
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+        }
+
+        pre, code {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #272727;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            overflow-x: auto;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+                transition: width 0.3s, padding 0.3s;
+            }
+            .sidebar.minimized {
+                width: 250px;
+                padding: 20px;
+            }
+            .sidebar h2, .sidebar ul {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s;
+            }
+            .sidebar.minimized h2, .sidebar.minimized ul {
+                opacity: 1;
+                visibility: visible;
+            }
+            .content {
+                margin-left: 0;
+                padding: 15px;
+                transition: margin-left 0.3s;
+            }
+            .sidebar.minimized + .content {
+                margin-left: 250px;
+            }
+            .toggle-btn {
+                position: fixed;
+                left: 10px;
+                top: 70px;
+                z-index: 1001;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Blog do Desenvolvedor</div>
+    <div class="main-container">
+        <div class="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+            <h2>Blog do Dev</h2>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Lógica de Programação</a></li>
+                <li><a href="arduino.html">Projetos Arduino</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            
+            <h1>Lógica de Programação: O Fundamento para Todo Desenvolvedor</h1>
+            <p>A lógica de programação é a base para qualquer linguagem de programação e é essencial para resolver problemas computacionais de forma estruturada. Neste artigo, vamos explorar o conceito de lógica de programação, entender sua importância e ver alguns exemplos práticos para facilitar seu aprendizado.</p>
+            
+            <h2>O que é Lógica de Programação?</h2>
+            <p>Lógica de programação é um conjunto de regras e conceitos que ajudam a estruturar o pensamento para criar algoritmos eficientes. Um algoritmo é uma sequência de passos lógicos que levam à solução de um problema. Se você já seguiu uma receita de bolo, já aplicou um algoritmo na prática!</p>
+            
+            <h2>Conceitos Fundamentais</h2>
+        
+            <h3>1. Variáveis e Tipos de Dados</h3>
+            <p>As variáveis armazenam valores que podem ser manipulados ao longo do código. Cada variável possui um tipo de dado, como números inteiros, decimais, texto, entre outros.</p>
+            <pre><code>
+# Exemplo em Python:
+
+idade = 25  # Variável do tipo inteiro
+
+nome = "Alice"  # Variável do tipo string
+
+altura = 1.68  # Variável do tipo float
+
+print(f"{nome} tem {idade} anos e {altura}m de altura.")
+
+            </code></pre>
+        
+            <h3>2. Estruturas Condicionais</h3>
+            <p>As estruturas condicionais permitem que um programa tome decisões com base em uma condição.</p>
+            <pre><code>
+# Exemplo:
+
+idade = int(input("Digite sua idade: "))
+
+if idade >= 18:
+
+    print("Você é maior de idade.")
+
+else:
+
+    print("Você é menor de idade.")
+
+            </code></pre>
+        
+            <h3>3. Estruturas de Repetição (Loops)</h3>
+            <p>Os loops permitem repetir um bloco de código várias vezes.</p>
+            <p><strong>Exemplo com <code>for</code>:</strong></p>
+            <pre><code>
+for i in range(1, 6):
+
+    print(f"Número {i}")
+
+            </code></pre>
+        
+            <p><strong>Exemplo com <code>while</code>:</strong></p>
+            <pre><code>
+contador = 0
+
+while contador < 5:
+
+    print(f"Contador: {contador}")
+
+    contador += 1
+
+            </code></pre>
+        
+            <h3>4. Funções</h3>
+            <p>Funções ajudam a organizar o código, evitando repetições e facilitando a manutenção.</p>
+            <pre><code>
+# Exemplo:
+
+def saudacao(nome):
+
+    return f"Olá, {nome}!"
+    
+print(saudacao("Carlos"))
+
+            </code></pre>
+        
+            <h3>5. Estruturas de Dados</h3>
+            <p>As listas e dicionários são muito utilizadas para armazenar e manipular coleções de dados.</p>
+            <p><strong>Exemplo de lista:</strong></p>
+            <pre><code>
+frutas = ["Maçã", "Banana", "Laranja"]
+
+for fruta in frutas:
+
+    print(fruta)
+
+            </code></pre>
+        
+            <p><strong>Exemplo de dicionário:</strong></p>
+            <p>
+                Um dicionário em programação é uma estrutura de dados que armazena pares de chave-valor, onde cada 
+                valor é associado a uma chave única. Ele é muito útil quando você precisa armazenar informações 
+                relacionadas e acessar esses valores de maneira rápida e eficiente por meio da chave.</p>
+            <pre><code>
+pessoa = {"nome": "João", "idade": 30, "cidade": "São Paulo"}
+
+print(pessoa["nome"])  # Saída: João
+
+            </code></pre>
+        
+            <h2>Conclusão</h2>
+            <p>Aprender lógica de programação é essencial para qualquer desenvolvedor, independentemente da linguagem que escolher. Ao dominar esses conceitos, você será capaz de criar soluções eficientes para diversos problemas.</p>
+            <p>Pratique bastante e, acima de tudo, divirta-se programando! 🚀</p>
+        </div>
+    </div>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('minimized');
+            document.querySelector('.content').classList.toggle('minimized');
+        }
+    </script>
+</body>
+</html>
