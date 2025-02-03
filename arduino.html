@@ -22,7 +22,7 @@
             color: white;
             padding: 15px;
             text-align: center;
-            font-size: 2rem; /* Ajuste responsivo para o cabeçalho */
+            font-size: 2rem;
             position: fixed;
             top: 0;
             left: 0;
@@ -46,7 +46,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            top: 60px; /* Ajuste para começar após o header */
+            top: 60px;
         }
         
         .sidebar.minimized {
@@ -115,19 +115,19 @@
         }
 
         h1 {
-            font-size: 2.5rem; /* Ajuste responsivo */
+            font-size: 2.5rem;
         }
 
         h2 {
-            font-size: 2rem; /* Ajuste responsivo */
+            font-size: 2rem;
         }
 
         h3 {
-            font-size: 1.5rem; /* Ajuste responsivo */
+            font-size: 1.5rem;
         }
 
         p, pre, code {
-            font-size: 1rem; /* Tamanho base de texto */
+            font-size: 1rem;
         }
 
         pre, code {
@@ -140,7 +140,6 @@
             overflow-x: auto;
         }
 
-        /* Responsividade */
         @media screen and (max-width: 768px) {
             .sidebar {
                 width: 0;
@@ -175,7 +174,6 @@
                 z-index: 1001;
             }
 
-            /* Ajustando os tamanhos de texto para dispositivos menores */
             .header {
                 font-size: 1.5rem;
             }
@@ -208,14 +206,8 @@
             </ul>
         </div>
         <div class="content">
-            
-
             <h1>Arduino</h1>
-            <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto que permite criar projetos 
-                interativos e automatizados. Ele é composto por uma placa com um microcontrolador (um pequeno computador) 
-                que pode ser programado para controlar sensores, motores, luzes e outros dispositivos. O Arduino é amplamente utilizado 
-                por hobbyistas, educadores e profissionais para desenvolver protótipos de eletrônicos de forma rápida e acessível.</p>
-            
+            <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto que permite criar projetos interativos e automatizados...</p>
             <h2>Linguagem de programação do Arduino</h2>
             <p>A linguagem de programação do Arduino é baseada em C/C++, mas simplificada para facilitar o uso de iniciantes. O código é escrito
              no Arduino IDE (Ambiente de Desenvolvimento Integrado), que compila e carrega o código diretamente na placa.</p>
@@ -232,33 +224,33 @@
 
 #include Servo.h
 
-Servo meuServo;
+    Servo meuServo;
     
-const int pinoPot = A0; 
+    const int pinoPot = A0; 
 
-int leituraPot;
+    int leituraPot;
 
-int angulo;           
+    int angulo;           
     
-void setup() {
+    void setup() {
 
-Serial.begin(9600);
+      Serial.begin(9600);
 
-meuServo.attach(9);
+      meuServo.attach(9);
 
     }
     
-void loop() {
+    void loop() {
 
-leituraPot = analogRead(pinoPot); 
+      leituraPot = analogRead(pinoPot); 
 
-Serial.println(leituraPot);      
+      Serial.println(leituraPot);      
     
-angulo = map(leituraPot, 0, 1023, 0, 180);
+      angulo = map(leituraPot, 0, 1023, 0, 180);
 
-meuServo.write(angulo);  
+      meuServo.write(angulo);  
 
-delay(10); 
+      delay(10); 
 
     }
     
@@ -385,9 +377,9 @@ delay(10);
 
                   delay(600); // Wait for 1000 millisecond(s)
 
-                  digitalWrite(LED_BUILTIN, LOW);
+         digitalWrite(LED_BUILTIN, LOW);
 
-                  delay(700); // Wait for 1000 millisecond(s)
+         delay(700); // Wait for 1000 millisecond(s)
                   
                   
                    digitalWrite(LED_BUILTIN, HIGH);
@@ -411,6 +403,7 @@ delay(10);
                    hobby ou para fins educacionais e profissionais, o Arduino proporciona uma excelente oportunidade de 
                    explorar o mundo da tecnologia e da inovação.</p>
             <p>Para mais projetos acesse meu Github!</p>
+        </div>
         </div>
     </div>
     <script>
