@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog </title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            width: 100%;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .main-container {
+            display: flex;
+            margin-top: 60px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            z-index: 999;
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar.minimized {
+            width: 60px;
+        }
+        .sidebar h2, .sidebar ul {
+            transition: opacity 0.3s;
+        }
+        .sidebar.minimized h2, .sidebar.minimized ul {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px;
+        }
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+            transition: margin-left 0.3s;
+        }
+        .sidebar.minimized + .content {
+            margin-left: 80px;
+        }
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Estilização das Seções */
+        section {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #222;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+        }
+
+        section ul li a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .coisas ul li, .highlights ul li {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+                transition: width 0.3s, padding 0.3s;
+            }
+            .sidebar.minimized {
+                width: 250px;
+                padding: 20px;
+            }
+            .sidebar h2, .sidebar ul {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s;
+            }
+            .sidebar.minimized h2, .sidebar.minimized ul {
+                opacity: 1;
+                visibility: visible;
+            }
+            .content {
+                margin-left: 0;
+                padding: 15px;
+                transition: margin-left 0.3s;
+            }
+            .sidebar.minimized + .content {
+                margin-left: 250px;
+            }
+            .toggle-btn {
+                position: fixed;
+                left: 10px;
+                top: 70px;
+                z-index: 1001;
+            }
+        }
+
+
+        
+    </style>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('minimized');
+            document.querySelector('.content').classList.toggle('minimized');
+        }
+    </script>
+</head>
+<body>
+    <div class="header">Blog Kelvin Camargo</div>
+    <div class="main-container">
+        <div class="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="logica.html">Lógica de Programação</a></li>
+                <li><a href="arduino.html">Projetos Arduino</a></li>
+                <li><a href="Ferramentas.html">Ferramentas e Recursos</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Blog Kelvin Camargo</title>
+            </head>
+            <body>
+
+                <section id="sobre">
+                    <h2>Sobre</h2>
+                    <p>Este blog foi criado para compartilhar conhecimentos sobre programação, eletrônica, Arduino e outras tecnologias. Aqui, você encontrará tutoriais, dicas, projetos e conteúdos para ajudá-lo a aprimorar suas habilidades no mundo da tecnologia.</p>
+                </section>
+            
+                <section id="missao">
+                    <h2>Nossa Missão</h2>
+                    <p>Nosso objetivo é tornar a programação e a eletrônica acessíveis a todos, desde iniciantes até profissionais experientes. Queremos criar uma comunidade onde todos possam aprender, compartilhar e inovar juntos.</p>
+                </section>
+            
+                <section id="o-que-encontrar">
+                    <h2>O que você encontrará aqui?</h2>
+                    <ul>
+                        <li>Tutoriais passo a passo: Desde conceitos básicos até projetos avançados.</li>
+                        <li>Dicas e truques: Melhores práticas e atalhos para facilitar o desenvolvimento.</li>
+                        <li>Projetos Arduino: Ideias criativas e códigos para experimentar.</li>
+                        <li>Ferramentas e recursos: Indicações de softwares, bibliotecas e plataformas úteis.</li>
+                    </ul>
+                </section>
+            
+                <section id="sobre-autor">
+                    <h2>Sobre o Autor</h2>
+                    <p>Sou um entusiasta da tecnologia, apaixonado por programação e eletrônica. 
+                        Comecei este blog para compartilhar meu conhecimento e aprender com a comunidade. 
+                        Se você tiver sugestões ou quiser contribuir, fique à vontade para entrar em contato!</p>
+                </section>
+            
+                <section id="conecte-se">
+                    <h2>Conecte-se!</h2>
+                 
+                    <p>📱 Redes sociais: <a href="www.linkedin.com/in/kelvin-camargo-18bb48238">Linkdin</a></p>
+                    <p>📂 GitHub: <a href="https://github.com/kelvincamargo">Kelvin</a></p>
+                </section>
+            </body>
+            </html>
+            
+        </div>
+    </div>
+</body>
+</html>
