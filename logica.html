@@ -23,7 +23,6 @@
             padding: 15px;
             text-align: center;
             font-size: 28px;
-            font-family: 'Roboto', sans-serif;
             position: fixed;
             top: 0;
             left: 0;
@@ -32,7 +31,7 @@
         
         .main-container {
             display: flex;
-            margin-top: 60px;
+            margin-top: 80px; /* Ajuste para dar espaço para o header fixo */
         }
         
         .sidebar {
@@ -47,7 +46,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            top: 60px;
+            top: 60px; /* Ajuste para começar após o header */
         }
         
         .sidebar.minimized {
@@ -81,7 +80,6 @@
             text-decoration: none;
             display: block;
             padding: 8px;
-            font-family: 'Roboto', sans-serif;
         }
         
         .sidebar ul li a:hover {
@@ -92,7 +90,6 @@
             margin-left: 270px;
             padding: 20px;
             flex-grow: 1;
-            font-family: 'Roboto', sans-serif;
             transition: margin-left 0.3s;
         }
         
