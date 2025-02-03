@@ -15,26 +15,25 @@
             background-color: #f4f4f4;
             color: #333;
         }
-
+        
         .header {
             width: 100%;
             background-color: #222;
             color: white;
             padding: 15px;
             text-align: center;
-            font-size: 28px;
-            font-family: 'Roboto', sans-serif;
+            font-size: 2rem; /* Ajuste responsivo para o cabeçalho */
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
         }
-
+        
         .main-container {
             display: flex;
-            margin-top: 60px;
+            margin-top: 80px; /* Ajuste para dar espaço para o header fixo */
         }
-
+        
         .sidebar {
             width: 250px;
             background-color: #333;
@@ -47,59 +46,57 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            top: 60px;
+            top: 60px; /* Ajuste para começar após o header */
         }
-
+        
         .sidebar.minimized {
             width: 60px;
             padding: 10px;
         }
-
+        
         .sidebar h2, .sidebar ul {
             transition: opacity 0.3s;
         }
-
+        
         .sidebar.minimized h2, 
         .sidebar.minimized ul {
             opacity: 0;
             visibility: hidden;
         }
-
+        
         .sidebar ul {
             list-style: none;
             padding: 0;
             width: 100%;
             text-align: center;
         }
-
+        
         .sidebar ul li {
             padding: 10px 0;
         }
-
+        
         .sidebar ul li a {
             color: white;
             text-decoration: none;
             display: block;
             padding: 8px;
-            font-family: 'Roboto', sans-serif;
         }
-
+        
         .sidebar ul li a:hover {
             background-color: #575757;
         }
-
+        
         .content {
             margin-left: 270px;
             padding: 20px;
             flex-grow: 1;
-            font-family: 'Roboto', sans-serif;
             transition: margin-left 0.3s;
         }
-
+        
         .sidebar.minimized + .content {
             margin-left: 80px;
         }
-
+        
         .toggle-btn {
             position: absolute;
             top: 20px;
@@ -117,47 +114,33 @@
             font-weight: 500;
         }
 
+        h1 {
+            font-size: 2.5rem; /* Ajuste responsivo */
+        }
+
+        h2 {
+            font-size: 2rem; /* Ajuste responsivo */
+        }
+
+        h3 {
+            font-size: 1.5rem; /* Ajuste responsivo */
+        }
+
+        p, pre, code {
+            font-size: 1rem; /* Tamanho base de texto */
+        }
+
         pre, code {
             font-family: 'Source Code Pro', monospace;
             background-color: #272727;
             color: #f8f8f2;
             padding: 10px;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1rem;
             overflow-x: auto;
         }
 
         /* Responsividade */
-        @media screen and (max-width: 1024px) {
-            .main-container {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: relative;
-                height: auto;
-                top: 0;
-                padding: 10px;
-            }
-
-            .sidebar.minimized {
-                width: 100%;
-            }
-
-            .content {
-                margin-left: 0;
-                padding: 15px;
-            }
-
-            .toggle-btn {
-                position: fixed;
-                left: 10px;
-                top: 70px;
-                z-index: 1001;
-            }
-        }
-
         @media screen and (max-width: 768px) {
             .sidebar {
                 width: 0;
@@ -191,6 +174,23 @@
                 top: 70px;
                 z-index: 1001;
             }
+
+            /* Ajustando os tamanhos de texto para dispositivos menores */
+            .header {
+                font-size: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            p, pre, code {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -204,10 +204,12 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="logica.html">Lógica de Programação</a></li>
-                <li><a href="#">Projetos Arduino</a></li>
+                <li><a href="arduino.html">Projetos Arduino</a></li>
             </ul>
         </div>
         <div class="content">
+            
+
             <h1>Arduino</h1>
             <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto que permite criar projetos 
                 interativos e automatizados. Ele é composto por uma placa com um microcontrolador (um pequeno computador) 
@@ -221,84 +223,193 @@
             <h2>Projetos realizados</h2>
         
             <h3>1. Controlando um Servo Motor</h3>
-            <p>Nesse projeto foi realizado o controle do movimento de um servo motor usando um potenciômetro...</p>
+            <p>
+                Nesse projeto foi realizado o controle do movimento de um servo motor usando um potenciômetro. O servo motor é um tipo de motor que 
+                pode ser posicionado em ângulos específicos. O potenciômetro vai permitir que você ajuste a posição do servo motor manualmente. 
+                </p>
             <pre><code>
 # Exemplo em C++:
 
 #include Servo.h
 
     Servo meuServo;
+    
     const int pinoPot = A0; 
+
     int leituraPot;
+
     int angulo;           
     
     void setup() {
+
       Serial.begin(9600);
+
       meuServo.attach(9);
+
     }
     
     void loop() {
+
       leituraPot = analogRead(pinoPot); 
+
       Serial.println(leituraPot);      
+    
       angulo = map(leituraPot, 0, 1023, 0, 180);
+
       meuServo.write(angulo);  
+
       delay(10); 
+
     }
+    
             </code></pre>
         
             <h3>2. Semáforo com millis</h3>
-            <p>Projeto realizado de um circuito de um semáforo utilizando a função millis().</p>
+            <p> Projeto realizado de um circuito de um semáforo utilizando a função millis():</p>
             <pre><code>
                 unsigned long agora = 0;
+
                 int ledVerde = 11;
+
                 int ledLaranja = 12;
+
                 int ledRed = 13;
                 
                 void setup() {
+
                   pinMode(ledRed, OUTPUT);
+
                   pinMode(ledLaranja, OUTPUT);
+
                   pinMode(ledVerde, OUTPUT);
+                  
                   agora = millis();  
+
                 }
                 
                 void loop() {
+
                   unsigned long tempoDecorrido = millis() - agora;
+
                   Serial.println(tempoDecorrido);
+                  
                   if (tempoDecorrido <= 6000) {
+
                     digitalWrite(ledVerde, HIGH);
+
                     digitalWrite(ledLaranja, LOW);
+
                     digitalWrite(ledRed, LOW);
+
                   } else if (tempoDecorrido <= 7000) {
+
                     digitalWrite(ledVerde, LOW);
+
                     digitalWrite(ledLaranja, HIGH);
+
                     digitalWrite(ledRed, LOW);
+
                   } else if (tempoDecorrido <= 16000) {
+
                     digitalWrite(ledVerde, LOW);
+
                     digitalWrite(ledLaranja, LOW);
+                   
                     digitalWrite(ledRed, HIGH);
-                  } else {
+
+                  } 
+                  
+                     else{
+                   
                     agora = millis();
-                  }
+                
+                        }
+
                 }
+
             </code></pre>
         
             <h3>3. Código morse</h3>
             <p>Projeto realizado para fazer um algoritmo que acione o led com o protocolo (código morse)</p>
             <pre><code>
-                void setup() {
+                // C++ code
+            
+                void setup()
+
+                {
+
                   pinMode(LED_BUILTIN, OUTPUT);
+
                 }
                 
-                void loop() {
+                void loop()
+
+                {
                   digitalWrite(LED_BUILTIN, HIGH);
-                  delay(1800); 
+
+                  delay(1800); // Wait for 1000 millisecond(s)
+
                   digitalWrite(LED_BUILTIN, LOW);
-                  delay(700); 
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                  
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(600); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(1800); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(2000); // Wait for 1000 millisecond(s)
+                  
+                  
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(600); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(2000); // Wait for 1000 millisecond(s)
+                  
+                  
+                    digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(600); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                  
+                  
+                   digitalWrite(LED_BUILTIN, HIGH);
+
+                  delay(1800); // Wait for 1000 millisecond(s)
+
+                  digitalWrite(LED_BUILTIN, LOW);
+
+                  delay(700); // Wait for 1000 millisecond(s)
+                
                 }
+
             </code></pre>
         
+        
             <h2>Conclusão</h2>
-            <p>Em conclusão, o Arduino é uma plataforma poderosa e acessível para quem deseja aprender e aplicar eletrônica e programação de maneira prática...</p>
+            <p>Em conclusão, o Arduino é uma plataforma poderosa e acessível para quem deseja aprender e aplicar eletrônica e programação de maneira prática. Sua simplicidade,
+                 aliada a uma comunidade ativa e recursos abundantes, torna a criação de projetos interativos mais fácil e
+                  divertida. A linguagem de programação, baseada em C/C++, oferece um ponto de partida ideal para 
+                  iniciantes, permitindo que qualquer pessoa possa começar a desenvolver soluções criativas. Seja para
+                   hobby ou para fins educacionais e profissionais, o Arduino proporciona uma excelente oportunidade de 
+                   explorar o mundo da tecnologia e da inovação.</p>
             <p>Para mais projetos acesse meu Github!</p>
         </div>
     </div>
