@@ -14,6 +14,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            position: relative;
         }
         
         .header {
@@ -27,6 +28,7 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            width: 100%;
         }
         
         .main-container {
@@ -40,63 +42,63 @@
             color: white;
             height: 100vh;
             padding: 20px;
-            position: fixed;
-            transition: width 0.3s;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            position: absolute; /* Mudei de fixed para absolute */
             top: 60px; /* Ajuste para começar após o header */
+            left: 0;
+            z-index: 999;
+            transition: all 0.3s ease;
         }
-        
+
         .sidebar.minimized {
             width: 60px;
             padding: 10px;
         }
-        
+
         .sidebar h2, .sidebar ul {
             transition: opacity 0.3s;
         }
-        
+
         .sidebar.minimized h2, 
         .sidebar.minimized ul {
             opacity: 0;
             visibility: hidden;
         }
-        
+
         .sidebar ul {
             list-style: none;
             padding: 0;
             width: 100%;
             text-align: center;
         }
-        
+
         .sidebar ul li {
             padding: 10px 0;
         }
-        
+
         .sidebar ul li a {
             color: white;
             text-decoration: none;
             display: block;
             padding: 8px;
         }
-        
+
         .sidebar ul li a:hover {
             background-color: #575757;
         }
-        
+
         .content {
             margin-left: 270px;
             padding: 20px;
             flex-grow: 1;
             transition: margin-left 0.3s;
+            position: relative; /* Para garantir que o conteúdo seja renderizado acima da sidebar */
+            z-index: 998;
         }
-        
+
         .sidebar.minimized + .content {
             margin-left: 80px;
         }
-        
+
         .toggle-btn {
             position: absolute;
             top: 20px;
@@ -107,6 +109,7 @@
             cursor: pointer;
             padding: 10px;
             font-size: 16px;
+            z-index: 1001;
         }
 
         h1, h2, h3 {
@@ -147,27 +150,33 @@
                 padding: 0;
                 transition: width 0.3s, padding 0.3s;
             }
+
             .sidebar.minimized {
                 width: 250px;
                 padding: 20px;
             }
+
             .sidebar h2, .sidebar ul {
                 opacity: 0;
                 visibility: hidden;
                 transition: opacity 0.3s;
             }
+
             .sidebar.minimized h2, .sidebar.minimized ul {
                 opacity: 1;
                 visibility: visible;
             }
+
             .content {
                 margin-left: 0;
                 padding: 15px;
                 transition: margin-left 0.3s;
             }
+
             .sidebar.minimized + .content {
                 margin-left: 250px;
             }
+
             .toggle-btn {
                 position: fixed;
                 left: 10px;
@@ -179,15 +188,19 @@
             .header {
                 font-size: 1.5rem;
             }
+
             h1 {
                 font-size: 2rem;
             }
+
             h2 {
                 font-size: 1.8rem;
             }
+
             h3 {
                 font-size: 1.3rem;
             }
+
             p, pre, code {
                 font-size: 0.9rem;
             }
@@ -203,13 +216,12 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="#">Lógica de Programação</a></li>
+                <li><a href="logica.html">Lógica de Programação</a></li>
                 <li><a href="arduino.html">Projetos Arduino</a></li>
             </ul>
         </div>
         <div class="content">
-            
-            
+            <!-- Conteúdo aqui -->
             <h1>Arduino</h1>
             <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto que permite criar projetos 
                 interativos e automatizados. Ele é composto por uma placa com um microcontrolador (um pequeno computador) 
@@ -411,7 +423,8 @@
                    hobby ou para fins educacionais e profissionais, o Arduino proporciona uma excelente oportunidade de 
                    explorar o mundo da tecnologia e da inovação.</p>
             <p>Para mais projetos acesse meu Github!</p>
-        </div>   
+
+    </div>
     <script>
         function toggleSidebar() {
             document.querySelector('.sidebar').classList.toggle('minimized');
