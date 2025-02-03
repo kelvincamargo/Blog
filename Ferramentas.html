@@ -3,188 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog </title>
+    <title>Blog do Desenvolvedor</title>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .header {
-            width: 100%;
-            background-color: #222;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 24px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        .main-container {
-            display: flex;
-            margin-top: 60px;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            height: 100vh;
-            padding: 20px;
-            position: fixed;
-            transition: width 0.3s;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            top: 60px; /* Ajuste para começar após o header */
-        }
-        
-        .sidebar.minimized {
-            width: 60px;
-            padding: 10px;
-        }
-        
-        .sidebar h2, .sidebar ul {
-            transition: opacity 0.3s;
-        }
-        
-        .sidebar.minimized h2, 
-        .sidebar.minimized ul {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .sidebar ul li {
-            padding: 10px 0;
-        }
-        
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 8px;
-        }
-        
-        .sidebar ul li a:hover {
-            background-color: #575757;
-        }
-        
-        .content {
-            margin-left: 270px;
-            padding: 20px;
-            flex-grow: 1;
-            transition: margin-left 0.3s;
-        }
-        
-        .sidebar.minimized + .content {
-            margin-left: 80px;
-        }
-       .toggle-btn {
-            position: absolute;
-            top: 20px;
-            left: 10px;
-            background-color: #444;
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            font-size: 16px;
-        }
+          @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro&display=swap');
 
-        /* Estilização das Seções */
-        section {
-            background-color: white;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        section h2 {
-            color: #222;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        section ul li {
-            margin-bottom: 10px;
-        }
-
-        section ul li a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        section ul li a:hover {
-            text-decoration: underline;
-        }
-
-        .coisas ul li, .highlights ul li {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Responsividade */
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                width: 0;
-                padding: 0;
-                transition: width 0.3s, padding 0.3s;
-            }
-            .sidebar.minimized {
-                width: 250px;
-                padding: 20px;
-            }
-            .sidebar h2, .sidebar ul {
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s;
-            }
-            .sidebar.minimized h2, .sidebar.minimized ul {
-                opacity: 1;
-                visibility: visible;
-            }
-            .content {
-                margin-left: 0;
-                padding: 15px;
-                transition: margin-left 0.3s;
-            }
-            .sidebar.minimized + .content {
-                margin-left: 250px;
-            }
-            .toggle-btn {
-                position: fixed;
-                left: 10px;
-                top: 70px;
-                z-index: 1001;
-            }
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
 
 
-        
+/* Estilização da seção Ferramentas e Recursos */
+.ferramentas-recursos {
+    background-color: #fff;
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+}
+
+/* Estilização do título da seção */
+.ferramentas-recursos h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Estilização dos itens da lista */
+.ferramentas-recursos ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilização de cada item */
+.ferramentas-recursos li {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Efeito hover */
+.ferramentas-recursos li:hover {
+    transform: scale(1.02);
+    background-color: #eef;
+}
+
+/* Ícones da seção */
+.ferramentas-recursos i {
+    font-size: 24px;
+    color: #007BFF;
+}
+
+
+.header {
+    width: 100%;
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main-container {
+    display: flex;
+    margin-top: 80px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    transition: width 0.3s;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 60px;
+    left: 0;
+}
+
+.sidebar.minimized {
+    width: 60px;
+    padding: 10px;
+}
+
+.sidebar h2, .sidebar ul {
+    transition: opacity 0.3s;
+}
+
+.sidebar.minimized h2, 
+.sidebar.minimized ul {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar ul li {
+    padding: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.minimized + .content {
+    margin-left: 80px;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    z-index: 1001;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        padding: 0;
+        transition: width 0.3s, padding 0.3s;
+    }
+    .sidebar.minimized {
+        width: 250px;
+        padding: 20px;
+    }
+    .sidebar.minimized h2, .sidebar.minimized ul {
+        opacity: 1;
+        visibility: visible;
+    }
+    .content {
+        margin-left: 0;
+    }
+    .sidebar.minimized + .content {
+        margin-left: 250px;
+    }
+}
     </style>
-    <script>
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('minimized');
-            document.querySelector('.content').classList.toggle('minimized');
-        }
-    </script>
 </head>
 <body>
     <div class="header">Blog Kelvin Camargo</div>
@@ -195,58 +193,72 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="logica.html">Lógica de Programação</a></li>
+                <li><a href="#">Lógica de Programação</a></li>
                 <li><a href="arduino.html">Projetos Arduino</a></li>
                 <li><a href="Ferramentas.html">Ferramentas e Recursos</a></li>
             </ul>
         </div>
         <div class="content">
-            <!DOCTYPE html>
-            <html lang="pt-BR">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Blog Kelvin Camargo</title>
-            </head>
-            <body>
-
-                <section id="sobre">
-                    <h2>Sobre</h2>
-                    <p>Este blog foi criado para compartilhar conhecimentos sobre programação, eletrônica, Arduino e outras tecnologias. Aqui, você encontrará tutoriais, dicas, projetos e conteúdos para ajudá-lo a aprimorar suas habilidades no mundo da tecnologia.</p>
-                </section>
+            <section class="ferramentas-recursos">
+                <h2>⚙️ Ferramentas e Recursos</h2>
+                <p>Nesta seção, você encontrará recomendações de ferramentas que podem facilitar seu trabalho como desenvolvedor. Desde editores de código e IDEs até bibliotecas e frameworks que otimizam seu fluxo de trabalho.</p>
             
-                <section id="missao">
-                    <h2>Nossa Missão</h2>
-                    <p>Nosso objetivo é tornar a programação e a eletrônica acessíveis a todos, desde iniciantes até profissionais experientes. Queremos criar uma comunidade onde todos possam aprender, compartilhar e inovar juntos.</p>
-                </section>
+                <h3>🔹 IDEs e Editores de Código</h3>
+                <ul>
+                    <li><strong><a href="https://code.visualstudio.com/">VS Code</a></strong> - Editor de código leve e altamente customizável.</li>
+                    <li><strong><a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a></strong> - Excelente para desenvolvimento Java e Kotlin.</li>
+                    <li><strong><a href="https://www.jetbrains.com/pycharm/">PyCharm</a></strong> - IDE especializada para Python.</li>
+                    <li><strong><a href="https://www.eclipse.org/">Eclipse</a></strong> - IDE tradicional para Java.</li>
+                    <li><strong><a href="https://www.sublimetext.com/">Sublime Text</a></strong> - Editor rápido e minimalista.</li>
+                </ul>
             
-                <section id="o-que-encontrar">
-                    <h2>O que você encontrará aqui?</h2>
-                    <ul>
-                        <li>Tutoriais passo a passo: Desde conceitos básicos até projetos avançados.</li>
-                        <li>Dicas e truques: Melhores práticas e atalhos para facilitar o desenvolvimento.</li>
-                        <li>Projetos Arduino: Ideias criativas e códigos para experimentar.</li>
-                        <li>Ferramentas e recursos: Indicações de softwares, bibliotecas e plataformas úteis.</li>
-                    </ul>
-                </section>
+                <h3>🚀 Frameworks e Bibliotecas</h3>
+                <h4>Desenvolvimento Web</h4>
+                <ul>
+                    <li><strong><a href="https://react.dev/">React.js</a></strong> - Biblioteca para criação de interfaces dinâmicas.</li>
+                    <li><strong><a href="https://vuejs.org/">Vue.js</a></strong> - Framework progressivo para interfaces web.</li>
+                    <li><strong><a href="https://angular.io/">Angular</a></strong> - Framework completo para aplicações web.</li>
+                    <li><strong><a href="https://getbootstrap.com/">Bootstrap</a></strong> - Biblioteca CSS para layouts responsivos.</li>
+                    <li><strong><a href="https://tailwindcss.com/">Tailwind CSS</a></strong> - Framework CSS moderno e customizável.</li>
+                </ul>
             
-                <section id="sobre-autor">
-                    <h2>Sobre o Autor</h2>
-                    <p>Sou um entusiasta da tecnologia, apaixonado por programação e eletrônica. 
-                        Comecei este blog para compartilhar meu conhecimento e aprender com a comunidade. 
-                        Se você tiver sugestões ou quiser contribuir, fique à vontade para entrar em contato!</p>
-                </section>
+                <h4>Desenvolvimento Backend</h4>
+                <ul>
+                    <li><strong><a href="https://nodejs.org/">Node.js</a></strong> - Plataforma para servidores e APIs.</li>
+                    <li><strong><a href="https://www.djangoproject.com/">Django</a></strong> - Framework Python rápido e seguro.</li>
+                    <li><strong><a href="https://spring.io/projects/spring-boot">Spring Boot</a></strong> - Framework robusto para Java.</li>
+                    <li><strong><a href="https://expressjs.com/">Express.js</a></strong> - Framework minimalista para APIs Node.js.</li>
+                </ul>
             
-                <section id="conecte-se">
-                    <h2>Conecte-se!</h2>
-                 
-                    <p>📱 Redes sociais: <a href="www.linkedin.com/in/kelvin-camargo-18bb48238">Linkdin</a></p>
-                    <p>📂 GitHub: <a href="https://github.com/kelvincamargo">Kelvin</a></p>
-                </section>
-            </body>
-            </html>
+                <h3>🖥️ Banco de Dados</h3>
+                <ul>
+                    <li><strong><a href="https://www.mysql.com/">MySQL</a></strong> - Banco de dados relacional popular.</li>
+                    <li><strong><a href="https://www.postgresql.org/">PostgreSQL</a></strong> - Banco de dados escalável e avançado.</li>
+                    <li><strong><a href="https://www.mongodb.com/">MongoDB</a></strong> - Banco NoSQL orientado a documentos.</li>
+                    <li><strong><a href="https://firebase.google.com/">Firebase</a></strong> - Banco de dados em tempo real do Google.</li>
+                </ul>
+            
+                <h3>🛠️ Ferramentas Úteis para Desenvolvedores</h3>
+                <ul>
+                    <li><strong><a href="https://github.com/">GitHub</a></strong> - Plataforma para versionamento e colaboração.</li>
+                    <li><strong><a href="https://www.postman.com/">Postman</a></strong> - Ferramenta para testar APIs.</li>
+                    <li><strong><a href="https://www.docker.com/">Docker</a></strong> - Criar ambientes isolados com conteinerização.</li>
+                    <li><strong><a href="https://www.figma.com/">Figma</a></strong> - Design e prototipagem de UI/UX.</li>
+                    <li><strong><a href="https://www.notion.so/">Notion</a></strong> - Documentação e organização de projetos.</li>
+                </ul>
+            
+                <h3>💡 Conclusão</h3>
+                <p>Escolher as ferramentas certas pode economizar tempo e tornar o desenvolvimento mais eficiente. Se você tem alguma ferramenta favorita que não foi mencionada aqui, compartilhe nos comentários! ✨</p>
+            </section>
             
         </div>
     </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('minimized');
+        }
+    </script>
 </body>
 </html>
