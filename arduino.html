@@ -14,54 +14,43 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            position: relative;
         }
-        
+
         .header {
             width: 100%;
             background-color: #222;
             color: white;
-            padding: 15px;
+            padding: 1rem;
             text-align: center;
-            font-size: 2rem; /* Ajuste responsivo para o cabeçalho */
+            font-size: 2rem;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
-            width: 100%;
         }
-        
+
         .main-container {
             display: flex;
-            margin-top: 80px; /* Ajuste para dar espaço para o header fixo */
+            margin-top: 80px;
+            flex-wrap: wrap;
         }
-        
+
         .sidebar {
             width: 250px;
             background-color: #333;
             color: white;
-            height: 100vh;
-            padding: 20px;
-            position: absolute; /* Mudei de fixed para absolute */
-            top: 60px; /* Ajuste para começar após o header */
-            left: 0;
-            z-index: 999;
-            transition: all 0.3s ease;
+            padding: 1rem;
+            position: fixed;
+            transition: width 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 60px;
         }
 
         .sidebar.minimized {
             width: 60px;
-            padding: 10px;
-        }
-
-        .sidebar h2, .sidebar ul {
-            transition: opacity 0.3s;
-        }
-
-        .sidebar.minimized h2, 
-        .sidebar.minimized ul {
-            opacity: 0;
-            visibility: hidden;
         }
 
         .sidebar ul {
@@ -72,14 +61,14 @@
         }
 
         .sidebar ul li {
-            padding: 10px 0;
+            padding: 1rem 0;
         }
 
         .sidebar ul li a {
             color: white;
             text-decoration: none;
             display: block;
-            padding: 8px;
+            padding: 0.5rem;
         }
 
         .sidebar ul li a:hover {
@@ -88,11 +77,9 @@
 
         .content {
             margin-left: 270px;
-            padding: 20px;
+            padding: 1.5rem;
             flex-grow: 1;
             transition: margin-left 0.3s;
-            position: relative; /* Para garantir que o conteúdo seja renderizado acima da sidebar */
-            z-index: 998;
         }
 
         .sidebar.minimized + .content {
@@ -109,7 +96,6 @@
             cursor: pointer;
             padding: 10px;
             font-size: 16px;
-            z-index: 1001;
         }
 
         h1, h2, h3 {
@@ -118,79 +104,50 @@
         }
 
         h1 {
-            font-size: 2.5rem; /* Ajuste responsivo */
+            font-size: 2.5rem;
         }
 
         h2 {
-            font-size: 2rem; /* Ajuste responsivo */
+            font-size: 2rem;
         }
 
         h3 {
-            font-size: 1.5rem; /* Ajuste responsivo */
+            font-size: 1.5rem;
         }
 
         p, pre, code {
-            font-size: 1rem; /* Tamanho base de texto */
+            font-size: 1rem;
         }
 
         pre, code {
             font-family: 'Source Code Pro', monospace;
             background-color: #272727;
             color: #f8f8f2;
-            padding: 10px;
+            padding: 1rem;
             border-radius: 5px;
             font-size: 1rem;
             overflow-x: auto;
         }
 
         /* Responsividade */
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1024px) {
             .sidebar {
-                width: 0;
-                padding: 0;
-                transition: width 0.3s, padding 0.3s;
-            }
-
-            .sidebar.minimized {
-                width: 250px;
-                padding: 20px;
-            }
-
-            .sidebar h2, .sidebar ul {
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s;
-            }
-
-            .sidebar.minimized h2, .sidebar.minimized ul {
-                opacity: 1;
-                visibility: visible;
+                width: 220px;
+                padding: 0.8rem;
             }
 
             .content {
-                margin-left: 0;
-                padding: 15px;
-                transition: margin-left 0.3s;
+                margin-left: 240px;
+                padding: 1.2rem;
             }
 
-            .sidebar.minimized + .content {
-                margin-left: 250px;
-            }
-
-            .toggle-btn {
-                position: fixed;
-                left: 10px;
-                top: 70px;
-                z-index: 1001;
-            }
-
-            /* Ajustando os tamanhos de texto para dispositivos menores */
             .header {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+                padding: 1rem;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             h2 {
@@ -205,6 +162,81 @@
                 font-size: 0.9rem;
             }
         }
+
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+            }
+
+            .sidebar.minimized {
+                width: 220px;
+                padding: 1rem;
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .sidebar.minimized + .content {
+                margin-left: 220px;
+            }
+
+            .toggle-btn {
+                position: fixed;
+                top: 70px;
+                left: 10px;
+                z-index: 1001;
+            }
+
+            .header {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p, pre, code {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header {
+                font-size: 1.2rem;
+                padding: 0.8rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            p, pre, code {
+                font-size: 0.8rem;
+            }
+
+            .sidebar.minimized + .content {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -216,12 +248,12 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="logica.html">Lógica de Programação</a></li>
+                <li><a href="#">Lógica de Programação</a></li>
                 <li><a href="arduino.html">Projetos Arduino</a></li>
             </ul>
         </div>
         <div class="content">
-            <!-- Conteúdo aqui -->
+            
             <h1>Arduino</h1>
             <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto que permite criar projetos 
                 interativos e automatizados. Ele é composto por uma placa com um microcontrolador (um pequeno computador) 
@@ -279,65 +311,65 @@
             <h3>2. Semáforo com millis</h3>
             <p> Projeto realizado de um circuito de um semáforo utilizando a função millis():</p>
             <pre><code>
-                unsigned long agora = 0;
+unsigned long agora = 0;
 
-                int ledVerde = 11;
+int ledVerde = 11;
 
-                int ledLaranja = 12;
+int ledLaranja = 12;
 
-                int ledRed = 13;
+int ledRed = 13;
                 
-                void setup() {
+void setup() {
 
-                  pinMode(ledRed, OUTPUT);
+pinMode(ledRed, OUTPUT);
 
-                  pinMode(ledLaranja, OUTPUT);
+pinMode(ledLaranja, OUTPUT);
 
-                  pinMode(ledVerde, OUTPUT);
+pinMode(ledVerde, OUTPUT);
                   
-                  agora = millis();  
+agora = millis();  
 
-                }
+}
                 
-                void loop() {
+void loop() {
 
-                  unsigned long tempoDecorrido = millis() - agora;
+unsigned long tempoDecorrido = millis() - agora;
 
-                  Serial.println(tempoDecorrido);
+Serial.println(tempoDecorrido);
                   
-                  if (tempoDecorrido <= 6000) {
+if (tempoDecorrido <= 6000) {
 
-                    digitalWrite(ledVerde, HIGH);
+digitalWrite(ledVerde, HIGH);
 
-                    digitalWrite(ledLaranja, LOW);
+digitalWrite(ledLaranja, LOW);
 
-                    digitalWrite(ledRed, LOW);
+digitalWrite(ledRed, LOW);
 
-                  } else if (tempoDecorrido <= 7000) {
+} else if (tempoDecorrido <= 7000) {
 
-                    digitalWrite(ledVerde, LOW);
+digitalWrite(ledVerde, LOW);
 
-                    digitalWrite(ledLaranja, HIGH);
+digitalWrite(ledLaranja, HIGH);
 
-                    digitalWrite(ledRed, LOW);
+digitalWrite(ledRed, LOW);
 
-                  } else if (tempoDecorrido <= 16000) {
+} else if (tempoDecorrido <= 16000) {
 
-                    digitalWrite(ledVerde, LOW);
+digitalWrite(ledVerde, LOW);
 
-                    digitalWrite(ledLaranja, LOW);
+digitalWrite(ledLaranja, LOW);
                    
-                    digitalWrite(ledRed, HIGH);
+digitalWrite(ledRed, HIGH);
 
-                  } 
+} 
                   
-                     else{
+else{
                    
-                    agora = millis();
+agora = millis();
                 
-                        }
+}
 
-                }
+    }
 
             </code></pre>
         
@@ -346,69 +378,67 @@
             <pre><code>
                 // C++ code
             
-                void setup()
+void setup()
 
-                {
+{
 
-                  pinMode(LED_BUILTIN, OUTPUT);
+pinMode(LED_BUILTIN, OUTPUT);
 
-                }
+ }
                 
-                void loop()
+ void loop()
 
-                {
-                  digitalWrite(LED_BUILTIN, HIGH);
+{
+digitalWrite(LED_BUILTIN, HIGH);
 
-                  delay(1800); // Wait for 1000 millisecond(s)
+delay(1800); // Wait for 1000 millisecond(s)
 
-                  digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_BUILTIN, LOW);
 
-                  delay(700); // Wait for 1000 millisecond(s)
+delay(700); // Wait for 1000 millisecond(s)
+                 
+digitalWrite(LED_BUILTIN, HIGH);
+
+delay(600); // Wait for 1000 millisecond(s)
+
+digitalWrite(LED_BUILTIN, LOW);
+
+delay(700); // Wait for 1000 millisecond(s)
+                  
+digitalWrite(LED_BUILTIN, HIGH);
+
+delay(1800); // Wait for 1000 millisecond(s)
+
+digitalWrite(LED_BUILTIN, LOW);
+
+delay(2000); // Wait for 1000 millisecond(s)
                   
                   
-                   digitalWrite(LED_BUILTIN, HIGH);
+digitalWrite(LED_BUILTIN, HIGH);
 
-                  delay(600); // Wait for 1000 millisecond(s)
+delay(600); // Wait for 1000 millisecond(s)
 
-                  digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_BUILTIN, LOW);
 
-                  delay(700); // Wait for 1000 millisecond(s)
-                  
-                   digitalWrite(LED_BUILTIN, HIGH);
-
-                  delay(1800); // Wait for 1000 millisecond(s)
-
-                  digitalWrite(LED_BUILTIN, LOW);
-
-                  delay(2000); // Wait for 1000 millisecond(s)
+delay(2000); // Wait for 1000 millisecond(s)
                   
                   
-                  
-                   digitalWrite(LED_BUILTIN, HIGH);
+digitalWrite(LED_BUILTIN, HIGH);
 
-                  delay(600); // Wait for 1000 millisecond(s)
+delay(600); // Wait for 1000 millisecond(s)
 
-                  digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_BUILTIN, LOW);
 
-                  delay(2000); // Wait for 1000 millisecond(s)
-                  
-                  
-                    digitalWrite(LED_BUILTIN, HIGH);
-
-                  delay(600); // Wait for 1000 millisecond(s)
-
-         digitalWrite(LED_BUILTIN, LOW);
-
-         delay(700); // Wait for 1000 millisecond(s)
+delay(700); // Wait for 1000 millisecond(s)
                   
                   
-                   digitalWrite(LED_BUILTIN, HIGH);
+digitalWrite(LED_BUILTIN, HIGH);
 
-                  delay(1800); // Wait for 1000 millisecond(s)
+delay(1800); // Wait for 1000 millisecond(s)
 
-                  digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_BUILTIN, LOW);
 
-                  delay(700); // Wait for 1000 millisecond(s)
+delay(700); // Wait for 1000 millisecond(s)
                 
                 }
 
@@ -423,12 +453,13 @@
                    hobby ou para fins educacionais e profissionais, o Arduino proporciona uma excelente oportunidade de 
                    explorar o mundo da tecnologia e da inovação.</p>
             <p>Para mais projetos acesse meu Github!</p>
-
+        </div>
     </div>
+
     <script>
         function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('minimized');
-            document.querySelector('.content').classList.toggle('minimized');
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('minimized');
         }
     </script>
 </body>
