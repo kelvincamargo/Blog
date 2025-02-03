@@ -15,77 +15,88 @@
             background-color: #f4f4f4;
             color: #333;
         }
-
+        
         .header {
             width: 100%;
             background-color: #222;
             color: white;
-            padding: 1rem;
+            padding: 15px;
             text-align: center;
-            font-size: 2rem;
+            font-size: 2rem; /* Ajuste responsivo para o cabeçalho */
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
         }
-
+        
         .main-container {
             display: flex;
-            margin-top: 80px;
-            flex-wrap: wrap;
+            margin-top: 80px; /* Ajuste para dar espaço para o header fixo */
         }
-
+        
         .sidebar {
             width: 250px;
             background-color: #333;
             color: white;
-            padding: 1rem;
+            height: 100vh;
+            padding: 20px;
             position: fixed;
             transition: width 0.3s;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            top: 60px;
+            top: 60px; /* Ajuste para começar após o header */
         }
-
+        
         .sidebar.minimized {
             width: 60px;
+            padding: 10px;
         }
-
+        
+        .sidebar h2, .sidebar ul {
+            transition: opacity 0.3s;
+        }
+        
+        .sidebar.minimized h2, 
+        .sidebar.minimized ul {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
         .sidebar ul {
             list-style: none;
             padding: 0;
             width: 100%;
             text-align: center;
         }
-
+        
         .sidebar ul li {
-            padding: 1rem 0;
+            padding: 10px 0;
         }
-
+        
         .sidebar ul li a {
             color: white;
             text-decoration: none;
             display: block;
-            padding: 0.5rem;
+            padding: 8px;
         }
-
+        
         .sidebar ul li a:hover {
             background-color: #575757;
         }
-
+        
         .content {
             margin-left: 270px;
-            padding: 1.5rem;
+            padding: 20px;
             flex-grow: 1;
             transition: margin-left 0.3s;
         }
-
+        
         .sidebar.minimized + .content {
             margin-left: 80px;
         }
-
+        
         .toggle-btn {
             position: absolute;
             top: 20px;
@@ -104,152 +115,97 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Ajuste responsivo */
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 2rem; /* Ajuste responsivo */
         }
 
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Ajuste responsivo */
         }
 
         p, pre, code {
-            font-size: 1rem;
+            font-size: 1rem; /* Tamanho base de texto */
         }
 
         pre, code {
             font-family: 'Source Code Pro', monospace;
             background-color: #272727;
             color: #f8f8f2;
-            padding: 1rem;
+            padding: 10px;
             border-radius: 5px;
             font-size: 1rem;
             overflow-x: auto;
         }
 
         /* Responsividade */
-        @media screen and (max-width: 1024px) {
-            .sidebar {
-                width: 220px;
-                padding: 0.8rem;
-            }
-
-            .content {
-                margin-left: 240px;
-                padding: 1.2rem;
-            }
-
-            .header {
-                font-size: 1.8rem;
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            h3 {
-                font-size: 1.3rem;
-            }
-
-            p, pre, code {
-                font-size: 0.9rem;
-            }
-        }
-
         @media screen and (max-width: 768px) {
             .sidebar {
                 width: 0;
                 padding: 0;
+                transition: width 0.3s, padding 0.3s;
             }
-
             .sidebar.minimized {
-                width: 220px;
-                padding: 1rem;
+                width: 250px;
+                padding: 20px;
             }
-
+            .sidebar h2, .sidebar ul {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s;
+            }
+            .sidebar.minimized h2, .sidebar.minimized ul {
+                opacity: 1;
+                visibility: visible;
+            }
             .content {
                 margin-left: 0;
-                padding: 1rem;
+                padding: 15px;
+                transition: margin-left 0.3s;
             }
-
             .sidebar.minimized + .content {
-                margin-left: 220px;
+                margin-left: 250px;
             }
-
             .toggle-btn {
                 position: fixed;
-                top: 70px;
                 left: 10px;
+                top: 70px;
                 z-index: 1001;
             }
 
+            /* Ajustando os tamanhos de texto para dispositivos menores */
             .header {
                 font-size: 1.5rem;
             }
-
             h1 {
                 font-size: 2rem;
             }
-
             h2 {
-                font-size: 1.6rem;
-            }
-
-            h3 {
-                font-size: 1.2rem;
-            }
-
-            p, pre, code {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .header {
-                font-size: 1.2rem;
-                padding: 0.8rem;
-            }
-
-            h1 {
                 font-size: 1.8rem;
             }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
             h3 {
-                font-size: 1rem;
+                font-size: 1.3rem;
             }
-
             p, pre, code {
-                font-size: 0.8rem;
-            }
-
-            .sidebar.minimized + .content {
-                margin-left: 0;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">Blog do Desenvolvedor</div>
+    <div class="header">Blog Kelvin Camargo</div>
     <div class="main-container">
         <div class="sidebar">
             <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-            <h2>Blog do Dev</h2>
+            <h2>Menu</h2>
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Lógica de Programação</a></li>
                 <li><a href="arduino.html">Projetos Arduino</a></li>
+                <li><a href="Ferramentas.html">Ferramentas e Recursos</a></li>
             </ul>
         </div>
         <div class="content">
@@ -345,9 +301,8 @@ for fruta in frutas:
             <p>
                 Um dicionário em programação é uma estrutura de dados que armazena pares de chave-valor, onde cada 
                 valor é associado a uma chave única. Ele é muito útil quando você precisa armazenar informações 
-                relacionadas e acessar esses valores de maneira rápida e eficiente por meio de suas chaves.
-            </p>
-  <pre><code>
+                relacionadas e acessar esses valores de maneira rápida e eficiente por meio da chave.</p>
+            <pre><code>
 pessoa = {"nome": "João", "idade": 30, "cidade": "São Paulo"}
 
 print(pessoa["nome"])  # Saída: João
@@ -359,11 +314,10 @@ print(pessoa["nome"])  # Saída: João
             <p>Pratique bastante e, acima de tudo, divirta-se programando! 🚀</p>
         </div>
     </div>
-
     <script>
         function toggleSidebar() {
-            var sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('minimized');
+            document.querySelector('.sidebar').classList.toggle('minimized');
+            document.querySelector('.content').classList.toggle('minimized');
         }
     </script>
 </body>
